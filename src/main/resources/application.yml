@@ -1,0 +1,7 @@
+# 원래 이 파일은 property 확장자였으나 yml이 조금 더 중복이 적고 계층구조가 확실하게 구분이 돼서 이걸 쓴다.
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog?serverTimezone=Asia/Seoul
+    username: cos
+    password: rud1243
