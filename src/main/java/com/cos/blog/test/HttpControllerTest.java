@@ -25,17 +25,22 @@ public class HttpControllerTest {
 		return "get 요청: "+m.getId() +","+m.getUsername()+","+m.getPassword()+","+m.getEmail();
 	}
 	//http://localhost:8080/http/post (insert)
-	@PostMapping("/http/post")
-	public String postTest(@RequestBody String text) { //바디 데이터는 리퀘스트바디를 줘야함
-		return "post요청: " +text;
+	@PostMapping("/http/post")   //이건 application/jason 방식이다!
+	public String postTest(@RequestBody Member m) { //바디 데이터는 리퀘스트바디를 줘야함 
+		//오브젝트에 각각 넣어줌 MessageConverter(스프링부트)가 해주게된다 !
+		return "post 요청: "+m.getId() +","+m.getUsername()+","+m.getPassword()+","+m.getEmail();
 	}
+//		@PostMapping("/http/post") 이건  text/plain 방식!
+//		public String postTest(@RequestBody String text) { //바디 데이터는 리퀘스트바디를 줘야함
+//			return "post요청: " +text;
+	
 //	public String postTest(Member m) {
 //		return "post요청: "+m.getId() +","+m.getUsername()+","+m.getPassword()+","+m.getEmail() ;
 //	}
 	//http://localhost:8080/http/put (update)
 	@PutMapping("/http/put")
-	public String putTest() {
-		return "put 요청";
+	public String putTest(@RequestBody Member m  ) {   //post나 put이나 delete 모두 바디를 통해 전달하기 때문에 리퀘스트바디 !
+		return "put 요청 : "+m.getId()+","+m.getPassword();
 		//http://localhost:8080/http/delete (delete)
 	}
 	@DeleteMapping("/http/delete")
